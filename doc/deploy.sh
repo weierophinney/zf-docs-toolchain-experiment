@@ -17,6 +17,10 @@ set -o errexit -o nounset
 # Get curent commit revision
 rev=$(git rev-parse --short HEAD)
 
+echo "markdown_extensions:" >> mkdocs.yml
+echo "    - pymdownx.superfences" >> mkdocs.yml
+echo "theme_dir: cinder" >> mkdocs.yml
+
 # Get documentation templates and assets
 (
     cd doc
