@@ -23,6 +23,8 @@ unzip -d cinder cinder.zip
 
 # Update the mkdocs.yml
 echo "markdown_extensions:" >> mkdocs.yml
+echo "    - markdown.extensions.codehilite:" >> mkdocs.yml
+echo "        use_pygments: False" >> mkdocs.yml
 echo "    - pymdownx.superfences" >> mkdocs.yml
 echo "theme_dir: cinder" >> mkdocs.yml
 
