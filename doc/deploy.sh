@@ -19,7 +19,7 @@ set -o errexit -o nounset
 rev=$(git rev-parse --short HEAD)
 
 # Get documentation templates and assets
-wget -O zf-mkdoc-theme.tgz https://github.com/weierophinney/zf-mkdoc-theme/archive/0.1.0.tar.gz
+wget -O zf-mkdoc-theme.tgz https://github.com/weierophinney/zf-mkdoc-theme/archive/0.1.1.tar.gz
 mkdir zf-mkdoc-theme
 (
     cd zf-mkdoc-theme
