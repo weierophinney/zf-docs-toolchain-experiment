@@ -5,6 +5,7 @@ language: php
 cache:
   directories:
     - $HOME/.composer/cache
+    - $HOME/.local
     - vendor
 
 env:
@@ -31,6 +32,7 @@ matrix:
     - php: hhvm
 
 before_install:
+  - export PATH="$HOME/.local/bin:$PATH"
   - if [[ $EXECUTE_TEST_COVERALLS != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
   - composer self-update
   - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then composer require --dev --no-update satooshi/php-coveralls:dev-master ; fi
@@ -48,8 +50,8 @@ after_script:
   - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then composer coveralls ; fi
 
 after_success:
-  - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install mkdocs ; fi
-  - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install pymdown-extensions ; fi
+  - if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install --user mkdocs ; fi
+  - if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install --user pymdown-extensions ; fi
   - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then ./doc/deploy.sh ; fi
 
 notifications:
