@@ -14,7 +14,7 @@
 
 # Get documentation templates and assets
 if [[ ! -d zf-mkdoc-theme ]];then
-    wget -O zf-mkdoc-theme.tgz https://github.com/weierophinney/zf-mkdoc-theme/archive/0.1.4.tar.gz ;
+    wget -O zf-mkdoc-theme.tgz https://github.com/weierophinney/zf-mkdoc-theme/archive/0.1.5.tar.gz ;
     mkdir zf-mkdoc-theme ;
     (
         cd zf-mkdoc-theme ;
