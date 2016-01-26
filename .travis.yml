@@ -25,11 +25,11 @@ before_install:
 
 script:
   - export DEPLOY=$([[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]])
-  - export NEEDS_THEME=$([ -d zf-mkdoc-theme ] ; result=$? ; if (( result == 0 )); then echo 0; else echo 1 ; fi)
+  - export NEEDS_THEME=$([ -d zf-mkdoc-theme ] ; result=$? ; if (( result == 0 )); then echo -n 0; else echo -n 1 ; fi)
   - if $DEPLOY; then pip install --user mkdocs ; fi
   - if $DEPLOY; then pip install --user pymdown-extensions ; fi
   - if [[ $DEPLOY && $NEEDS_THEME == 1 ]]; then echo "Downloading zf-mkdoc-theme" ; mkdir zf-mkdoc-theme ; $(curl -s -L https://github.com/weierophinney/zf-mkdoc-theme/releases/latest | egrep -o '/weierophinney/zf-mkdoc-theme/archive/[0-9]*\.[0-9]*\.[0-9]*.tar.gz' | head -n1 | wget -O zf-mkdoc-theme.tgz --base=https://github.com/ -i -) ; $(cd zf-mkdoc-theme ; tar xzf ../zf-mkdoc-theme.tgz --strip-components=1) ; echo "Finished downloading and installing zf-mkdoc-theme" ; fi
-  - export CAN_DEPLOY=$([ -f zf-mkdoc-theme/deploy.sh ] ; result=$? ; if (( result == 0 )); then echo 1; else echo 0 ; fi)
+  - export CAN_DEPLOY=$([ -f zf-mkdoc-theme/deploy.sh ] ; result=$? ; if (( result == 0 )); then echo -n 1; else echo -n 0 ; fi)
   - if [[ $DEPLOY && $CAN_DEPLOY == 1 ]]; then echo "Preparing to build and deploy documentation" ; ./zf-mkdoc-theme/deploy.sh ; echo "Completed deploying documentation" ; else echo "Missing deployment script" ; fi
 
 notifications:
