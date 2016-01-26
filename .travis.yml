@@ -10,6 +10,8 @@ cache:
 env:
   global:
     - SITE_URL: https://weierophinney.github.io/zf-docs-toolchain-experiment
+    - GH_USER: "Matthew Weier O'Phinney"
+    - GH_EMAIL: matthew@weierophinney.net
     - GH_REF: github.com/weierophinney/zf-docs-toolchain-experiment.git
     - secure: "FI3tgH7aRpHK4hPrld+hRCvVO29xmelGHrUbriUDWya1fPKB8S/E1QT6Ayl26i/l2qo+XDUKokbRd8PavH5A0YW76gv5s+OB5RErZ+1SBNAGAAkQLX/6F5mRMXHBQcx11IvD3VL5CxpASigNjZtXFT2z5mn7rWHKLey8UGZ5GOB6p+pNbsSVRvTETClfN7HaJvvjawg0B9qk5+DNu9KVeb6Vb5YWz9xAO6Tz9gihXmMz8ijQ0hL+M2wXPBPA5okeOwPoX3c4WPJsOGsUQK37ZlS5M6505/xuHChz4kZJa2/XSgYDIVwUrNhA7B+/jhQNRa9AhigfRs0Y+eL9vuiaWJg4U7yy9pJ3/HaDclCVMxPauMdZYFOm6kRF6EeumTZckmefjoZDKmfCgzyD1AJVFDRwkoAoc4q3A6qMws7okX3rLN3NbmikDUZu/BfunFBnjeCXi2hW2cWN5pNp4ak/ZCLfPrOvvBBUhvnTHI+dLvT4PhSl8zxLJQW+JBHvfklWMEnhYRkGVvCnUpQna7r6M9qp13Od6ZyJYm1P3BxWgRWJvVerdA1q7u2wbJiK3yxCZxhyYfWCMEAT72/uEPlxHDP51D95G+xTDtYcvZyZ6aoa0kZ62iUjZJ7F0SVa7pjzFJ0R/2aKCkSM3Ez0lrJvRVky40N1HbY8YVtewgI5YpE="
 
