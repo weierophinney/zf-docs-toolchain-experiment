@@ -36,6 +36,10 @@ echo "theme_dir: zf-mkdoc-theme" >> mkdocs.yml
 mkdocs build --clean
 mv mkdocs.yml.orig mkdocs.yml
 
+# Make images responsive
+echo "Making images responsive"
+php doc/img_responsive.php
+
 # Replace landing page content
 echo "Replacing landing page content"
 php doc/swap_index.php
