@@ -14,7 +14,10 @@
             {% endif %}
 
             <!-- Main title -->
-            <a class="navbar-brand" href="{{ homepage_url }}">{{ site_name }}</a>
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="{{ base_url }}/img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="{{ homepage_url }}">{{ site_name }}</a>
+            </span>
         </div>
 
         <!-- Expanded navigation -->
@@ -49,12 +52,12 @@
                 </li>
                 {% if include_next_prev %}
                     <li {% if not previous_page %}class="disabled"{% endif %}>
-                        <a rel="next" {% if previous_page %}href="{{ previous_page.url }}"{% endif %}>
+                        <a rel="prev" {% if previous_page %}href="{{ previous_page.url }}"{% endif %}>
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li {% if not next_page %}class="disabled"{% endif %}>
-                        <a rel="prev" {% if next_page %}href="{{ next_page.url }}"{% endif %}>
+                        <a rel="next" {% if next_page %}href="{{ next_page.url }}"{% endif %}>
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>

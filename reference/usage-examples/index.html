@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     <title>Examples - Expressive</title>
@@ -12,8 +12,9 @@
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link href="../../css/base.css" rel="stylesheet">
     <link href="../../css/cinder.css" rel="stylesheet">
     <link href="../../css/prism-zf.css" rel="stylesheet">
@@ -54,7 +55,10 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../..">Expressive</a>
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="../../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="../..">Expressive</a>
+            </span>
         </div>
 
         <!-- Expanded navigation -->
@@ -419,12 +423,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../cookbook/using-routed-middleware-class-as-controller/">
+                        <a rel="prev" href="../../cookbook/using-routed-middleware-class-as-controller/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../expressive-projects/">
+                        <a rel="next" href="../expressive-projects/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -444,6 +448,7 @@
     </div>
 </div>
 
+    <!-- content:begin -->
     <div class="container">
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
@@ -467,6 +472,29 @@
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="../..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Examples</li>
+</ol>
+
+<nav class="hidden-lg">
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../../cookbook/using-routed-middleware-class-as-controller/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../expressive-projects/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
 
 <h1 id="usage-examples">Usage Examples</h1>
 <p>Below are several usage examples, covering a variety of ways of creating and
@@ -1025,9 +1053,23 @@ $app-&gt;run();</code></pre>
 
 
 <p>This approach allows you to develop discrete applications and compose them
-together to create a website.</p></div>
+together to create a website.</p>
+
+<hr />
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../../cookbook/using-routed-middleware-class-as-controller/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../expressive-projects/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav></div>
         
     </div>
+    <!-- content:end -->
 
     <footer class="col-md-12 text-center">
         <hr>
@@ -1041,6 +1083,7 @@ together to create a website.</p></div>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/prism-zf.js"></script>
 
+    <script>var base_url = '../..';</script>
     <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
     <script src="../../js/base.js"></script>
 
