@@ -24,14 +24,15 @@ matrix:
 
 before_install:
   - export PATH="$HOME/.local/bin:$PATH"
-  - echo "TRAVIS_BRANCH = ${TRAVIS_BRANCH}"
-  - echo "TRAVIS_PULL_REQUEST = ${TRAVIS_PULL_REQUEST}"
 
 script:
-  - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install --user mkdocs ; fi
-  - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install --user pymdown-extensions ; fi
-  - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && ! -d "zf-mkdoc-theme" ]]; then echo "Downloading zf-mkdoc-theme" ; mkdir zf-mkdoc-theme ; $(curl -s -L https://github.com/weierophinney/zf-mkdoc-theme/releases/latest | egrep -o '/weierophinney/zf-mkdoc-theme/archive/[0-9]*\.[0-9]*\.[0-9]*.tar.gz' | head -n1 | wget -O zf-mkdoc-theme.tgz --base=https://github.com/ -i -) ; $(cd zf-mkdoc-theme ; tar xzf ../zf-mkdoc-theme.tgz --strip-components=1) ; echo "Finished downloading and installing zf-mkdoc-theme" ; fi
-  - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && -f "zf-mkdoc-theme/deploy.sh"  ]]; then echo "Preparing to build and deploy documentation" ; ./zf-mkdoc-theme/deploy.sh ; echo "Completed deploying documentation" ; fi
+  - export DEPLOY=$([[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]])
+  - if $DEPLOY; then pip install --user mkdocs ; fi
+  - if $DEPLOY; then pip install --user pymdown-extensions ; fi
+  - export NEEDS_THEME=$([[ $DEPLOY && ! -d zf-mkdoc-theme ]])
+  - if $NEEDS_THEME; then echo "Downloading zf-mkdoc-theme" ; mkdir zf-mkdoc-theme ; $(curl -s -L https://github.com/weierophinney/zf-mkdoc-theme/releases/latest | egrep -o '/weierophinney/zf-mkdoc-theme/archive/[0-9]*\.[0-9]*\.[0-9]*.tar.gz' | head -n1 | wget -O zf-mkdoc-theme.tgz --base=https://github.com/ -i -) ; $(cd zf-mkdoc-theme ; tar xzf ../zf-mkdoc-theme.tgz --strip-components=1) ; echo "Finished downloading and installing zf-mkdoc-theme" ; fi
+  - export DEPLOY_SCRIPT_FOUND=$([[ $DEPLOY && -f zf-mkdoc-theme ]])
+  - if $DEPLOY_SCRIPT_FOUND; then echo "Preparing to build and deploy documentation" ; ./zf-mkdoc-theme/deploy.sh ; echo "Completed deploying documentation" ; fi
 
 notifications:
   email: true
