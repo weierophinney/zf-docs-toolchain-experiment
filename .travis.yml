@@ -4,9 +4,7 @@ language: php
 
 cache:
   directories:
-    - $HOME/.composer/cache
     - $HOME/.local
-    - vendor
     - zf-mkdoc-theme
 
 env:
@@ -20,37 +18,14 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 5.5
-      env:
-        - EXECUTE_CS_CHECK=true
     - php: 5.6
       env:
-        - EXECUTE_TEST_COVERALLS=true
         - DEPLOY_DOCS=true
-    - php: 7
-    - php: hhvm
-  allow_failures:
-    - php: hhvm
 
 before_install:
   - export PATH="$HOME/.local/bin:$PATH"
-  - if [[ $EXECUTE_TEST_COVERALLS != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
-  - composer self-update
-  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then composer require --dev --no-update satooshi/php-coveralls:dev-master ; fi
-
-install:
-  - travis_retry composer install --no-interaction
-  - composer info -i
 
 script:
-  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then composer test-coverage ; fi
-  - if [[ $EXECUTE_TEST_COVERALLS != 'true' ]]; then composer test ; fi
-  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then composer cs ; fi
-
-after_script:
-  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then composer coveralls ; fi
-
-after_success:
   - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install --user mkdocs ; fi
   - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then pip install --user pymdown-extensions ; fi
   - if [[ $DEPLOY_DOCS == 'true' && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' && ! -d "zf-mkdoc-theme" ]]; then $(curl -s -L https://github.com/weierophinney/zf-mkdoc-theme/releases/latest | egrep -o '/weierophinney/zf-mkdoc-theme/archive/[0-9]*\.[0-9]*\.[0-9]*.tar.gz' | head -n1 | wget -O zf-mkdoc-theme.tgz --base=https://github.com/ -i - && mkdir zf-mkdoc-theme && $(cd zf-mkdoc-theme && tar xzf ../zf-mkdoc-theme.tgz --strip-components=1)) ; fi
