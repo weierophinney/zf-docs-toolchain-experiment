@@ -28,7 +28,7 @@ before_install:
 
 script:
   - return 0
-  - if [[ $DEPLOY == "true" && "$TRAVIS_TEST_RESULT" == "0" ]]; then wget -O theme-installer.sh "https://raw.githubusercontent.com/weierophinney/zf-mkdoc-theme/7953dfcff2d390fb4b9c1aebe089b491948518d2/theme-installer.sh" ; chmod 755 theme-installer.sh ; ./theme-installer.sh ; fi
+  - if [[ $DEPLOY == "true" && "$TRAVIS_TEST_RESULT" == "0" ]]; then wget -O theme-installer.sh "https://raw.githubusercontent.com/weierophinney/zf-mkdoc-theme/0aaa177eea9025e5757ea48546958a4e6cc38068/theme-installer.sh" ; chmod 755 theme-installer.sh ; ./theme-installer.sh ; fi
 
 after_success:
   - if [[ $DEPLOY == "true" ]]; then echo "Building and deploying documentation" ; ./zf-mkdoc-theme/deploy.sh ; fi
